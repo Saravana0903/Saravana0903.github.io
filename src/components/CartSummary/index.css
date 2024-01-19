@@ -1,0 +1,11 @@
+/* Write your CSS here */
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.order-con {
+  display: flex;
+  align-items: center;
+}
