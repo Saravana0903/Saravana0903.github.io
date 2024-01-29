@@ -1,43 +1,35 @@
-// Write your code here
-
-import {Component} from 'react'
 import CartContext from '../../context/CartContext'
+
 import './index.css'
 
-class CartSummary extends Component {
-  render() {
-    return (
-      <CartSummary.Consumer>
-        {value => {
-          const {cartList} = value
-          const calOrderSum = () => {
-            let sum = 0
-            cartList.forEach(item => {
-              sum += item.price * item.quantity
-            })
-            return sum
-          }
-          const itemsCount = () => {
-            if (cartList.length === 0) {
-              return 'No items in Cart'
-            }
-            return `${cartList.length} items in Cart`
-          }
-          return (
-            <div className="cart-summary">
-              <div className="order-con">
-                <p>Order Total:</p>
-                <p>Rs {this.calOrderSum()}/-</p>
-              </div>
-              <div>
-                <p>{this.itemsCount()}</p>
-              </div>
-              <button className="btn btn-primary">Checkout</button>
-            </div>
-          )
-        }}
-      </CartSummary.Consumer>
-    )
-  }
-}
+const CartSummary = () => (
+  <CartContext.Consumer>
+    {value => {
+      const {cartList} = value
+      let total = 0
+      cartList.forEach(eachCartItem => {
+        total += eachCartItem.price * eachCartItem.quantity
+      })
+
+      return (
+        <>
+          <div className="cart-summary-container">
+            <h1 className="order-total-value">
+              <span className="order-total-label">Order Total:</span> Rs {total}
+              /-
+            </h1>
+            <p className="total-items">{cartList.length} Items in cart</p>
+            <button type="button" className="checkout-button d-sm-none">
+              Checkout
+            </button>
+          </div>
+          <button type="button" className="checkout-button d-lg-none">
+            Checkout
+          </button>
+        </>
+      )
+    }}
+  </CartContext.Consumer>
+)
+
 export default CartSummary

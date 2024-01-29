@@ -1,12 +1,12 @@
 {
   "arrowParens": "avoid",
   "bracketSpacing": false,
-  "endOfLine": "lf",
+  "endOfLine": "auto",
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
   "jsxBracketSameLine": false,
   "jsxSingleQuote": false,
-  "printWidth": 80,
+  "printWidth": 100,
   "overrides": [
     {
       "files": "*.md",
