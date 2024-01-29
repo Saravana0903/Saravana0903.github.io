@@ -53,18 +53,14 @@ class App extends Component {
 
   removeCartItem = id => {
     const {cartList} = this.state
-    const updatedCartList = cartList.filter(
-      eachCartItem => eachCartItem.id !== id,
-    )
+    const updatedCartList = cartList.filter(eachCartItem => eachCartItem.id !== id)
 
     this.setState({cartList: updatedCartList})
   }
 
   addCartItem = product => {
     const {cartList} = this.state
-    const productObject = cartList.find(
-      eachCartItem => eachCartItem.id === product.id,
-    )
+    const productObject = cartList.find(eachCartItem => eachCartItem.id === product.id)
 
     if (productObject) {
       this.setState(prevState => ({
@@ -103,11 +99,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/products" component={Products} />
-          <ProtectedRoute
-            exact
-            path="/products/:id"
-            component={ProductItemDetails}
-          />
+          <ProtectedRoute exact path="/products/:id" component={ProductItemDetails} />
           <ProtectedRoute exact path="/cart" component={Cart} />
           <Route path="/not-found" component={NotFound} />
           <Redirect to="not-found" />
